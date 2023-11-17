@@ -28,7 +28,7 @@ app.get("/new", (req, res) => {
 app.get("/edit/:id", async (req, res) => {
   try {
     const response = await axios.get(`${API_URL}/posts/${req.params.id}`);
-    console.log(response.data);
+    // console.log(response.data);
     res.render("modify.ejs", {
       heading: "Edit Post",
       submit: "Update Post",
@@ -52,14 +52,14 @@ app.post("/api/posts", async (req, res) => {
 
 // Partially update a post
 app.post("/api/posts/:id", async (req, res) => {
-  console.log("called");
+  // console.log("called");
   // console.log(req.body);
   try {
     const response = await axios.patch(
       `${API_URL}/posts/${req.params.id}`,
       req.body
     );
-    console.log(response.data);
+    // console.log(response.data);
     res.redirect("/");
   } catch (error) {
     res.status(500).json({ message: "Error updating post" });
